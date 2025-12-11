@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BumSeatBookers - Investor Pitch Deck</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,200,300,400,500,700,800,900&f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --yellow: #FFE500;
+      --coral: #FF6B4A;
+      --cream: #FAF9F6;
+      --grey: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'General Sans', system-ui, sans-serif;
+      background: var(--black);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    .slide {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 80px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 40px 24px;
+      }
+    }
+
+    .slide-number {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+    }
+
+    h1 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .text-yellow { color: var(--yellow); }
+    .text-coral { color: var(--coral); }
+    .text-muted { color: rgba(255,255,255,0.6); }
+
+    .subtitle {
+      font-size: clamp(18px, 2.5vw, 28px);
+      color: rgba(255,255,255,0.7);
+      max-width: 700px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--grey);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 32px;
+    }
+
+    .card-highlight {
+      border-color: var(--yellow);
+      background: linear-gradient(135deg, rgba(255,229,0,0.1), rgba(255,107,74,0.05));
+    }
+
+    .stat-big {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 16px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .bullet-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      background: var(--yellow);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .timeline-marker {
+      width: 48px;
+      height: 48px;
+      background: var(--grey);
+      border: 2px solid var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .timeline-content h4 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content p {
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+    }
+
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      text-align: center;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .flow-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--grey);
+      border: 2px solid var(--yellow);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .flow-arrow {
+      font-size: 32px;
+      color: var(--yellow);
+    }
+
+    .competitor-table {
+      width: 100%;
+      margin-top: 40px;
+      border-collapse: collapse;
+    }
+
+    .competitor-table th,
+    .competitor-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .competitor-table th {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .competitor-table td:first-child {
+      font-weight: 700;
+    }
+
+    .check { color: #22c55e; }
+    .cross { color: #ef4444; }
+    .partial { color: var(--yellow); }
+
+    .pie-chart {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .pie-visual {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--yellow) 0deg 144deg,
+        var(--coral) 144deg 270deg,
+        #666 270deg 360deg
+      );
+      position: relative;
+    }
+
+    .pie-visual::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: var(--black);
+      border-radius: 50%;
+    }
+
+    .pie-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .legend-color {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 80px 40px;
+    }
+
+    .cta-email {
+      font-size: 24px;
+      color: var(--yellow);
+      text-decoration: none;
+      border-bottom: 2px solid var(--yellow);
+      padding-bottom: 4px;
+    }
+
+    .logo-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-12deg);
+    }
+
+    .logo-text {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, var(--yellow), var(--coral));
+      color: var(--black);
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .highlight-box h3 {
+      color: var(--black);
+    }
+
+    .nav-dots {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .nav-dot:hover,
+    .nav-dot.active {
+      background: var(--yellow);
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 768px) {
+      .nav-dots { display: none; }
+    }
+
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s;
+    }
+
+    .print-btn:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    @media print {
+      .nav-dots, .print-btn { display: none; }
+      .slide {
+        page-break-after: always;
+        min-height: 100vh;
+        padding: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation dots -->
+  <nav class="nav-dots" id="navDots"></nav>
+
+  <!-- Print button -->
+  <button class="print-btn" onclick="window.print()">Download PDF</button>
+
+  <!-- Slide 1: Title -->
+  <section class="slide" id="slide-1">
+    <span class="slide-number">01 / 12</span>
+    <div class="logo-header">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+          <path d="M13 5v2"/>
+          <path d="M13 17v2"/>
+          <path d="M13 11v2"/>
+        </svg>
+      </div>
+      <span class="logo-text">
+        <span class="text-yellow">Bum</span><span>Seat</span><span class="text-coral">Bookers</span>
+      </span>
+    </div>
+    <h1>
+      <span class="text-yellow">Last-minute</span> tickets.<br>
+      <span class="text-coral">First-class</span> nights.
+    </h1>
+    <p class="subtitle">
+      The two-sided marketplace that fills empty venue seats with spontaneous people looking for cheap nights out.
+    </p>
+    <p style="margin-top: 60px; color: rgba(255,255,255,0.4); font-size: 14px; letter-spacing: 0.1em;">
+      SEED INVESTMENT PITCH &mdash; DECEMBER 2024
+    </p>
+  </section>
+
+  <!-- Slide 2: The Problem -->
+  <section class="slide" id="slide-2">
+    <span class="slide-number">02 / 12</span>
+    <span class="tag">The Problem</span>
+    <h2>Empty seats are <span class="text-coral">dead money</span></h2>
+
+    <div class="grid-2">
+      <div>
+        <h3>For Promoters</h3>
+        <ul class="bullet-list">
+          <li>15-20% of live event tickets go unsold on average</li>
+          <li>Tickets become worthless the moment an event starts</li>
+          <li>Independent venues lack marketing budgets to shift last-minute inventory</li>
+          <li>Empty seats kill atmosphere and hurt reviews</li>
+        </ul>
+      </div>
+      <div>
+        <h3>For Consumers</h3>
+        <ul class="bullet-list">
+          <li>Spontaneous people want cheap last-minute plans</li>
+          <li>No centralised place to find last-minute deals</li>
+          <li>Discovery is fragmented across dozens of sources</li>
+          <li>Fear of missing out on local events they'd love</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="stat-big">£420M+</div>
+      <p style="font-size: 18px; margin-top: 8px;">Estimated value of unsold tickets in the UK live events market annually</p>
+    </div>
+  </section>
+
+  <!-- Slide 3: The Solution -->
+  <section class="slide" id="slide-3">
+    <span class="slide-number">03 / 12</span>
+    <span class="tag">The Solution</span>
+    <h2><span class="text-yellow">BumSeatBookers</span></h2>
+
+    <p class="subtitle" style="max-width: 900px;">
+      A two-sided marketplace connecting promoters with unsold inventory to spontaneous deal-seekers hungry for last-minute plans.
+    </p>
+
+    <div class="grid-3" style="margin-top: 60px;">
+      <div class="card">
+        <h3 class="text-yellow">For Promoters</h3>
+        <p class="text-muted">Connect events, set automated release rules ("Drop prices 48hrs before at 50% off"), and watch seats fill. Set it and forget it.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-coral">For Deal Seekers</h3>
+        <p class="text-muted">Sign up for alerts based on location and interests. Get notified when deals drop near you. Grab tickets, go out, have a great night.</p>
+      </div>
+      <div class="card">
+        <h3>Everyone Wins</h3>
+        <p class="text-muted">Promoters recover revenue on tickets that would've been £0. Fuller venues = better atmosphere. Subscribers get cheap nights out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: How It Works -->
+  <section class="slide" id="slide-4">
+    <span class="slide-number">04 / 12</span>
+    <span class="tag">How It Works</span>
+    <h2>Dead simple <span class="text-yellow">for everyone</span></h2>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="flow-icon">📅</div>
+        <h4>Promoter Sets Rules</h4>
+        <p class="text-muted" style="font-size: 14px;">Connect events, define discount triggers</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-icon">⚡</div>
+        <h4>Trigger Fires</h4>
+        <p class="text-muted" style="font-size: 14px;">48hrs before, unsold seats released at discount</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-icon">🔔</div>
+        <h4>Subscribers Notified</h4>
+        <p class="text-muted" style="font-size: 14px;">Push notifications to matching users</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-icon">🎟️</div>
+        <h4>Tickets Sold</h4>
+        <p class="text-muted" style="font-size: 14px;">One-tap purchase, instant delivery</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-icon">🎉</div>
+        <h4>Everyone Wins</h4>
+        <p class="text-muted" style="font-size: 14px;">Full venue, happy punter, revenue recovered</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Market Opportunity -->
+  <section class="slide" id="slide-5">
+    <span class="slide-number">05 / 12</span>
+    <span class="tag">Market Opportunity</span>
+    <h2>A <span class="text-yellow">£6.5 billion</span> market</h2>
+
+    <div class="grid-4">
+      <div class="card">
+        <div class="stat-big">£6.5B</div>
+        <p class="stat-label">UK live events market</p>
+      </div>
+      <div class="card">
+        <div class="stat-big">15-20%</div>
+        <p class="stat-label">Tickets unsold (average)</p>
+      </div>
+      <div class="card">
+        <div class="stat-big">8,000+</div>
+        <p class="stat-label">Independent venues in UK</p>
+      </div>
+      <div class="card">
+        <div class="stat-big">47M</div>
+        <p class="stat-label">Annual event attendees</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <h3>Our Focus: The Underserved Middle</h3>
+      <ul class="bullet-list">
+        <li><strong>Comedy clubs & stand-up nights</strong> - 1,200+ venues, weekly shows, high last-minute potential</li>
+        <li><strong>Grassroots music venues</strong> - 850+ venues, often struggle to fill weeknight shows</li>
+        <li><strong>Fringe theatre & arts</strong> - Huge unsold inventory, desperate for bums in seats</li>
+        <li><strong>Club nights & DJ events</strong> - Peak spontaneous purchase category</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 6: Business Model -->
+  <section class="slide" id="slide-6">
+    <span class="slide-number">06 / 12</span>
+    <span class="tag">Business Model</span>
+    <h2>We make money when <span class="text-coral">seats fill</span></h2>
+
+    <div class="grid-2">
+      <div>
+        <h3>Revenue Streams</h3>
+        <div class="card" style="margin-top: 20px;">
+          <h4 style="color: var(--yellow);">Commission (Primary)</h4>
+          <p class="text-muted">15-20% on every ticket sold through the platform</p>
+          <p style="margin-top: 16px; font-size: 24px; font-weight: 700;">Average ticket: £15 → Our cut: £2.50-3.00</p>
+        </div>
+        <div class="card" style="margin-top: 20px;">
+          <h4 style="color: var(--coral);">SaaS Tier</h4>
+          <p class="text-muted">£49/month for Pro features: analytics, lower commission, priority placement</p>
+        </div>
+      </div>
+      <div>
+        <h3>Unit Economics</h3>
+        <table style="width: 100%; margin-top: 20px;">
+          <tr>
+            <td class="text-muted">Average ticket price</td>
+            <td style="text-align: right; font-weight: 700;">£15</td>
+          </tr>
+          <tr>
+            <td class="text-muted">Our commission (18%)</td>
+            <td style="text-align: right; font-weight: 700; color: var(--yellow);">£2.70</td>
+          </tr>
+          <tr>
+            <td class="text-muted">Payment processing</td>
+            <td style="text-align: right; font-weight: 700;">-£0.40</td>
+          </tr>
+          <tr>
+            <td class="text-muted">Variable costs</td>
+            <td style="text-align: right; font-weight: 700;">-£0.30</td>
+          </tr>
+          <tr style="border-top: 2px solid var(--yellow);">
+            <td style="font-weight: 700;">Contribution margin</td>
+            <td style="text-align: right; font-weight: 700; color: var(--yellow); font-size: 20px;">£2.00 (74%)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Traction & Roadmap -->
+  <section class="slide" id="slide-7">
+    <span class="slide-number">07 / 12</span>
+    <span class="tag">Roadmap</span>
+    <h2>From <span class="text-yellow">Devon</span> to the <span class="text-coral">UK</span></h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker">Q1 '25</div>
+        <div class="timeline-content">
+          <h4>Launch in Devon & Bristol</h4>
+          <p>50 venue partners, 5,000 subscribers. Prove the model locally.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">Q2 '25</div>
+        <div class="timeline-content">
+          <h4>Expand to Major UK Cities</h4>
+          <p>Manchester, Birmingham, Leeds, Edinburgh. 200+ venues, 25,000 subscribers.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">Q3 '25</div>
+        <div class="timeline-content">
+          <h4>API Integrations</h4>
+          <p>Connect with Eventbrite, Dice, See Tickets. Automated inventory sync.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">Q4 '25</div>
+        <div class="timeline-content">
+          <h4>National Coverage</h4>
+          <p>500+ venues, 100,000 subscribers. Break-even target.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">2026</div>
+        <div class="timeline-content">
+          <h4>European Expansion</h4>
+          <p>Berlin, Amsterdam, Dublin. International growth begins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Competitive Landscape -->
+  <section class="slide" id="slide-8">
+    <span class="slide-number">08 / 12</span>
+    <span class="tag">Competition</span>
+    <h2>We're not <span class="text-coral">competing</span>. We're <span class="text-yellow">creating</span>.</h2>
+
+    <table class="competitor-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Self-Service</th>
+          <th>Automated</th>
+          <th>Two-Sided</th>
+          <th>Indie Focus</th>
+          <th>UK Market</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="text-yellow">BumSeatBookers</strong></td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Ticketmaster</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="partial">~</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Last Second Tickets</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="partial">~</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>TodayTix</td>
+          <td class="partial">~</td>
+          <td class="cross">✗</td>
+          <td class="partial">~</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Dice</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card card-highlight" style="margin-top: 40px;">
+      <h3>Our Moat: Two-Sided Network Effects</h3>
+      <p class="text-muted">More subscribers → more attractive to promoters → more deals → more subscribers. Like Too Good To Go proved with food, this model creates compounding value that's hard to replicate.</p>
+    </div>
+  </section>
+
+  <!-- Slide 9: Team -->
+  <section class="slide" id="slide-9">
+    <span class="slide-number">09 / 12</span>
+    <span class="tag">Team</span>
+    <h2>Built by people who <span class="text-yellow">get it</span></h2>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div class="card">
+        <h3>Founding Team</h3>
+        <p class="text-muted" style="margin-top: 16px;">
+          [Founder details to be added]
+        </p>
+        <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+          Background in live events, product development, and marketplace businesses.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Built by Dizzy Otter</h3>
+        <p class="text-muted" style="margin-top: 16px;">
+          Software studio specialising in rapid product development and go-to-market execution.
+        </p>
+        <ul class="bullet-list" style="margin-top: 24px;">
+          <li>Track record of 0→1 product launches</li>
+          <li>Deep expertise in marketplace dynamics</li>
+          <li>Lean, fast, focused execution</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 40px; text-align: center;">
+      <p style="font-size: 18px; color: rgba(255,255,255,0.6);">
+        "We're not building a company. We're building a <span class="text-yellow">movement</span>. Every empty seat is a missed connection, a show that could've been better, money left on the table. We're here to fix that."
+      </p>
+    </div>
+  </section>
+
+  <!-- Slide 10: The Ask -->
+  <section class="slide" id="slide-10">
+    <span class="slide-number">10 / 12</span>
+    <span class="tag">The Ask</span>
+    <h2>Seeking <span class="text-yellow">£150,000</span> seed investment</h2>
+
+    <div class="grid-2">
+      <div>
+        <h3>Use of Funds</h3>
+        <div class="pie-chart">
+          <div class="pie-visual"></div>
+          <div class="pie-legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background: var(--yellow);"></div>
+              <span><strong>40%</strong> - Product Development</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: var(--coral);"></div>
+              <span><strong>35%</strong> - Go-to-Market</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: #666;"></div>
+              <span><strong>25%</strong> - Operations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>6-Month Targets</h3>
+        <div class="card" style="margin-top: 20px;">
+          <div class="grid-2" style="margin-top: 0; gap: 20px;">
+            <div>
+              <div class="stat-big" style="font-size: 48px;">50</div>
+              <p class="stat-label">Partner Venues</p>
+            </div>
+            <div>
+              <div class="stat-big" style="font-size: 48px;">5K</div>
+              <p class="stat-label">Subscribers</p>
+            </div>
+            <div>
+              <div class="stat-big" style="font-size: 48px;">£50K</div>
+              <p class="stat-label">GMV</p>
+            </div>
+            <div>
+              <div class="stat-big" style="font-size: 48px;">94%</div>
+              <p class="stat-label">Fill Rate Target</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Vision -->
+  <section class="slide" id="slide-11">
+    <span class="slide-number">11 / 12</span>
+    <span class="tag">The Vision</span>
+    <h2>The <span class="text-coral">Too Good To Go</span> of live events</h2>
+
+    <div class="grid-2" style="margin-top: 60px;">
+      <div>
+        <p style="font-size: 24px; line-height: 1.6;">
+          Too Good To Go proved that surplus inventory + mobile-first marketplace + time-sensitivity =
+          <span class="text-yellow">billion-dollar opportunity</span>.
+        </p>
+        <p style="margin-top: 24px; color: rgba(255,255,255,0.6);">
+          They did it for food waste. We're doing it for empty seats.
+        </p>
+      </div>
+      <div class="card card-highlight">
+        <h3 style="margin-bottom: 24px;">Too Good To Go by Numbers</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span>Valuation</span>
+            <strong>$1.2B+</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span>Users</span>
+            <strong>80M+</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span>Partners</span>
+            <strong>170K+</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span>Countries</span>
+            <strong>17</strong>
+          </div>
+        </div>
+        <p style="margin-top: 24px; font-size: 14px; color: rgba(0,0,0,0.6);">
+          Same model. Different vertical. Massive opportunity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12: Contact -->
+  <section class="slide" id="slide-12" style="text-align: center;">
+    <span class="slide-number">12 / 12</span>
+    <div class="logo-header" style="justify-content: center;">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+          <path d="M13 5v2"/>
+          <path d="M13 17v2"/>
+          <path d="M13 11v2"/>
+        </svg>
+      </div>
+      <span class="logo-text">
+        <span class="text-yellow">Bum</span><span>Seat</span><span class="text-coral">Bookers</span>
+      </span>
+    </div>
+
+    <h1 style="margin-top: 40px;">
+      Let's fill<br>some <span class="text-yellow">seats</span>.
+    </h1>
+
+    <div style="margin-top: 60px;">
+      <p class="text-muted" style="margin-bottom: 16px;">Get in touch</p>
+      <a href="mailto:hello@bumseatbookers.com" class="cta-email">hello@bumseatbookers.com</a>
+    </div>
+
+    <div style="margin-top: 60px; display: flex; justify-content: center; gap: 40px;">
+      <div>
+        <p class="text-muted" style="font-size: 14px;">Website</p>
+        <p style="color: var(--yellow);">bumseatbookers.com</p>
+      </div>
+      <div>
+        <p class="text-muted" style="font-size: 14px;">Location</p>
+        <p>Devon, UK 🇬🇧</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 80px; color: rgba(255,255,255,0.3); font-size: 12px;">
+      Confidential - For discussion purposes only - December 2024
+    </p>
+  </section>
+
+  <script>
+    // Generate navigation dots
+    const slides = document.querySelectorAll('.slide');
+    const navDots = document.getElementById('navDots');
+
+    slides.forEach((slide, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'nav-dot';
+      dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+      dot.onclick = () => slide.scrollIntoView({ behavior: 'smooth' });
+      navDots.appendChild(dot);
+    });
+
+    // Highlight active dot on scroll
+    const dots = document.querySelectorAll('.nav-dot');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(slides).indexOf(entry.target);
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    slides.forEach(slide => observer.observe(slide));
+  </script>
+</body>
+</html>
