@@ -262,3 +262,39 @@ body {
   content: '';
   @apply absolute left-0 top-1/2 w-full h-0.5 bg-bum-coral -rotate-12;
 }
+
+/* Mobile-first improvements */
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary {
+    @apply px-5 py-3 text-sm w-full;
+  }
+
+  /* Ensure touch targets are large enough */
+  button, a {
+    min-height: 44px;
+  }
+
+  /* Better spacing on mobile */
+  section {
+    @apply py-16;
+  }
+
+  /* Fix text overflow */
+  h1, h2, h3, h4 {
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Improve tap highlights on mobile */
+@media (hover: none) {
+  .deal-card-glow::before {
+    display: none;
+  }
+
+  button:active,
+  a:active {
+    opacity: 0.8;
+  }
+}

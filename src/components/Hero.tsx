@@ -23,7 +23,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container-custom relative z-10 pt-24 pb-16">
+      <div className="container-custom relative z-10 pt-28 sm:pt-24 pb-16 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
           {/* Live indicator */}
           <motion.div
@@ -46,7 +46,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tight mb-6"
           >
             <span className="text-bum-cream">Empty seats are</span>
             <br />
@@ -60,7 +60,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="font-body text-lg sm:text-xl md:text-2xl text-bum-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="font-body text-base sm:text-lg md:text-xl lg:text-2xl text-bum-cream/70 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2"
           >
             The last-minute ticket marketplace that fills venues and gives
             spontaneous people cheap nights out.
@@ -71,7 +71,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 w-full max-w-md sm:max-w-none mx-auto"
           >
             <Button
               variant="primary"
@@ -118,14 +118,14 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Floating ticket stubs */}
+        {/* Floating ticket stubs - positioned away from text */}
         <motion.div
           animate={{
             y: [0, -10, 0],
             rotate: [12, 15, 12],
           }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 right-10 hidden lg:block"
+          className="absolute top-32 right-4 xl:right-16 hidden xl:block opacity-40 pointer-events-none"
         >
           <div className="bg-bum-grey p-4 border border-white/10 transform rotate-12 shadow-2xl">
             <Ticket className="w-12 h-12 text-bum-yellow/50" />
@@ -138,30 +138,13 @@ export default function Hero() {
             rotate: [-15, -12, -15],
           }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-1/4 left-10 hidden lg:block"
+          className="absolute top-48 left-4 xl:left-16 hidden xl:block opacity-40 pointer-events-none"
         >
           <div className="bg-bum-grey p-4 border border-white/10 transform -rotate-12 shadow-2xl">
             <Ticket className="w-10 h-10 text-bum-coral/50" />
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-bum-cream/40"
-        >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-bum-cream/40 to-transparent" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

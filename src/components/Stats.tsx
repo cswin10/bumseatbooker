@@ -101,8 +101,16 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative bg-bum-grey/50 border border-white/5 p-6 group hover:border-bum-yellow/30 transition-colors"
+              className="relative bg-bum-grey/50 border border-white/5 p-6 pt-14 group hover:border-bum-yellow/30 transition-colors"
             >
+              {/* Type badge - at top */}
+              <div className={`absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-2 py-1 ${
+                testimonial.type === 'promoter'
+                  ? 'bg-bum-coral/10 text-bum-coral'
+                  : 'bg-bum-yellow/10 text-bum-yellow'
+              }`}>
+                {testimonial.type === 'promoter' ? 'Promoter' : 'Deal Seeker'}
+              </div>
               <Quote className="absolute top-4 right-4 w-8 h-8 text-bum-yellow/10 group-hover:text-bum-yellow/20 transition-colors" />
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, j) => (
@@ -124,14 +132,6 @@ export default function Stats() {
                     {testimonial.role}
                   </div>
                 </div>
-              </div>
-              {/* Type badge */}
-              <div className={`absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-2 py-1 ${
-                testimonial.type === 'promoter'
-                  ? 'bg-bum-coral/10 text-bum-coral'
-                  : 'bg-bum-yellow/10 text-bum-yellow'
-              }`}>
-                {testimonial.type === 'promoter' ? 'Promoter' : 'Deal Seeker'}
               </div>
             </motion.div>
           ))}

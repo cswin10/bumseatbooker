@@ -14,7 +14,7 @@ export default function LiveDeals() {
     : liveDeals;
 
   return (
-    <section id="deals" className="py-24 bg-bum-grey/30 relative">
+    <section id="deals" className="py-16 sm:py-24 bg-bum-grey/30 relative">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-ticket-pattern opacity-50" />
 
@@ -35,11 +35,11 @@ export default function LiveDeals() {
               Live Now
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-bum-cream mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-bum-cream mb-4">
             Tonight&apos;s{' '}
             <span className="text-bum-yellow">Deals</span>
           </h2>
-          <p className="text-bum-cream/60 max-w-xl mx-auto">
+          <p className="text-bum-cream/60 max-w-xl mx-auto text-sm sm:text-base px-4">
             Grab these before they&apos;re gone. New deals drop every hour.
           </p>
         </motion.div>
@@ -49,11 +49,11 @@ export default function LiveDeals() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap items-center justify-center gap-2 mb-12"
+          className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-8 sm:mb-12 px-2"
         >
           <button
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 text-sm font-display font-bold uppercase tracking-wider transition-all ${
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-display font-bold uppercase tracking-wider transition-all ${
               activeCategory === null
                 ? 'bg-bum-yellow text-bum-black'
                 : 'bg-bum-grey text-bum-cream/60 hover:text-bum-cream border border-white/10'
@@ -65,19 +65,19 @@ export default function LiveDeals() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 text-sm font-display font-bold uppercase tracking-wider transition-all ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-display font-bold uppercase tracking-wider transition-all ${
                 activeCategory === cat.id
                   ? 'bg-bum-yellow text-bum-black'
                   : 'bg-bum-grey text-bum-cream/60 hover:text-bum-cream border border-white/10'
               }`}
             >
-              {cat.emoji} {cat.label}
+              <span className="hidden sm:inline">{cat.emoji} </span>{cat.label}
             </button>
           ))}
         </motion.div>
 
         {/* Deals grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredDeals.map((deal, index) => (
             <DealCard key={deal.id} deal={deal} index={index} />
           ))}
