@@ -1,0 +1,264 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,200,300,400,500,700,800,900&f[]=general-sans@200,300,400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cabinet: 'Cabinet Grotesk', system-ui, sans-serif;
+  --font-general: 'General Sans', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-general);
+  background-color: #0a0a0a;
+  color: #FAF9F6;
+  overflow-x: hidden;
+}
+
+/* Grain overlay effect */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Ticket stub perforation effect */
+.ticket-edge {
+  position: relative;
+}
+
+.ticket-edge::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 8px,
+    #FFE500 8px,
+    #FFE500 10px
+  );
+  opacity: 0.3;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFE500;
+}
+
+/* Selection color */
+::selection {
+  background-color: #FFE500;
+  color: #0a0a0a;
+}
+
+/* Button base styles */
+.btn-primary {
+  @apply bg-bum-yellow text-bum-black font-display font-bold px-8 py-4 text-lg uppercase tracking-wider transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-bum-cream transform -translate-y-1;
+  box-shadow: 0 10px 40px rgba(255, 229, 0, 0.3);
+}
+
+.btn-secondary {
+  @apply border-2 border-bum-yellow text-bum-yellow font-display font-bold px-8 py-4 text-lg uppercase tracking-wider transition-all duration-300 bg-transparent;
+}
+
+.btn-secondary:hover {
+  @apply bg-bum-yellow text-bum-black;
+}
+
+/* Animated underline */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FFE500;
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Deal card glow effect */
+.deal-card-glow {
+  position: relative;
+}
+
+.deal-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, #FFE500 0%, #FF6B4A 100%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.deal-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Number counter animation */
+@keyframes count {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.count-animate {
+  animation: count 0.6s ease-out forwards;
+}
+
+/* Stagger children animation */
+.stagger-children > * {
+  opacity: 0;
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Live pulse indicator */
+.live-pulse {
+  @apply relative;
+}
+
+.live-pulse::before {
+  content: '';
+  @apply absolute w-3 h-3 bg-bum-coral rounded-full -left-5 top-1/2 -translate-y-1/2;
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 74, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 74, 0);
+  }
+}
+
+/* Ticket stub card style */
+.ticket-stub {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid #333;
+}
+
+.ticket-stub::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #333,
+    #333 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+/* Glowing text */
+.glow-text {
+  text-shadow: 0 0 40px rgba(255, 229, 0, 0.5);
+}
+
+/* Section divider */
+.section-divider {
+  @apply w-full h-px bg-gradient-to-r from-transparent via-bum-yellow/30 to-transparent;
+}
+
+/* Responsive container */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* FAQ accordion styles */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq-content.open {
+  max-height: 500px;
+}
+
+/* Price slash effect */
+.price-slash {
+  @apply relative text-gray-500;
+}
+
+.price-slash::after {
+  content: '';
+  @apply absolute left-0 top-1/2 w-full h-0.5 bg-bum-coral -rotate-12;
+}
